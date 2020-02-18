@@ -1,1 +1,1 @@
-console.log('works great!')
+alert('Source integrity verified!')
