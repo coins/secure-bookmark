@@ -8,7 +8,6 @@ location = 'data:text/html,'+encodeURIComponent(`
     <!-- Homescreen icons -->
     <link rel="apple-touch-icon" sizes="144x144" href="https://https://bitcoin.robinlinus.com/images/icon-144x144.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="manifest" href="manifest.json">
 </head>
 <h1>Secure Bookmark Demo</h1>
 Bookmark this page to test the favicon.
