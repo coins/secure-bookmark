@@ -1,4 +1,4 @@
-location = encodeURIComponent(`data:text/html, 
+location = 'data:text/html,'+encodeURIComponent(` 
 <head>
     <meta charset="utf-8">
     <title>Secure Bookmark Demo</title>
