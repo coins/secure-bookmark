@@ -6,6 +6,9 @@ location = 'data:text/html,'+encodeURIComponent(`
     <link rel="shortcut icon" type="image/x-icon" href="https://bitcoin.robinlinus.com/images/icon-192x192.png">
     <meta name="description" content="Secure Bookmark Demo">
     <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="https://bitcoin.robinlinus.com/images/icon-144x144.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="href="https://bitcoin.robinlinus.com/images/icon-144x144.png"/>
     <link rel="apple-touch-icon" sizes="144x144" href="https://bitcoin.robinlinus.com/images/icon-144x144.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
