@@ -17,6 +17,7 @@ seed = Array.from(seed)
 const bodyHTML = `<html>
   <head>
   <title>Bitcoin Demo</title>
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="https://bitcoin.robinlinus.com/images/icon-144x144.png">
@@ -45,7 +46,7 @@ const bodyHTML = `<html>
   <body translate="no">
     <h1>Bitcoin Demo App</h1>
     <h2>DISCLAIMER: EXPERIMENTAL DEMO</h2>
-    DON'T USE REAL MONEY !! THIS IS A EXPERIMENTAL CODE. 
+    DON'T USE REAL MONEY !! THIS IS EXPERIMENTAL CODE. 
     <h2>Your Address</h2>
     <div>
       <a id="el_address" target="_blank"></a>
