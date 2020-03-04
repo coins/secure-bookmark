@@ -1,5 +1,6 @@
-## Encodings
-The following are interesting Data URL encoding examples:
+## Data URL Encodings
+The following are interesting Data URL encoding examples. They demonstrate that the subresource integrity check accepts as `src` both an external URL and a Data URL. They're interchangeable while the hash remains the same.
+
 
 ```html
 data:text/html,<script integrity='sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4=' src='https://coins.github.io/secure-bookmark/encodings/foo.js' crossorigin></script>
@@ -21,11 +22,10 @@ data:text/html,<script integrity='sha256-sFHon+re/xKBUEHD0J8Vw0kJzU3Lmz9pBEan/YV
 data:text/html,<script integrity='sha256-sFHon+re/xKBUEHD0J8Vw0kJzU3Lmz9pBEan/YVLNdg=' crossorigin src='data:application/javascript;base64,cz1kb2N1bWVudC5jcmVhdGVFbGVtZW50KGBzY3JpcHRgKTtzLmludGVncml0eT1gc2hhMjU2LXpDK2RORmV3U1lETG1xZHYwT3Z5VWhLZlVXWGxmSXlTcktmWXpqZ3h1QTQ9YDtzLnNyYz1sb2NhdGlvbi5oYXNoLnN1YnN0cigxKTtzLmNyb3NzT3JpZ2luPTE7ZG9jdW1lbnQuaGVhZC5hcHBlbmQocyk'></script>#https://coins.github.io/secure-bookmark/encodings/foo.js
 ```
 
-This demonstrates that subresource integrity does not care if the `src` is a external URL or a Data URL. They're interchangeable. 
 
 
 ## Top-Level Navigation 
-Top-level navigation to Data URLs is disabled in Chrome and Firefox. Fortunately we can use `pushState` to to store data persistently before bookmarking the URL:
+Top-level navigation to Data URLs is disabled in Chrome and Firefox. Fortunately we can use `pushState` to store data persistently before bookmarking the URL:
 ```
 history.pushState(0,0,location.href+'#data')
 ```
