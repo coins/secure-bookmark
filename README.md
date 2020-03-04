@@ -36,9 +36,9 @@ This Data URL downloads the JavaScript at https://example.com and before executi
 Usability-wise, a bookmarked web app can feel just like a native app thanks to browser features such as "add to home screen" and standalone mode.
 
 ## Demo Apps 
-This is a most simple working example:
-```
-data:text/html,<script integrity='sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4=' src='https://coins.github.io/secure-bookmark/encodings/foo.js' crossorigin></script>
+Here is a most simple working example:
+```html
+data:text/html,<script integrity='sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4' src='https://coins.github.io/secure-bookmark/encodings/foo.js' crossorigin></script>
 ```
 
 There are two demo apps:
