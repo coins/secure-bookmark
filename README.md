@@ -22,7 +22,7 @@ Alright, if we can't use the stores because they are centralized and the apps ca
 ## SecureBookmarks with Data URLs
 Installing a secure app is possible with Data URLs and subresource integrity. Here's an example:
 
-```
+```html
 data:text/html,<script integrity=sha256-cb4FM5gL20dRVo8Fs0ogQ/A5EiARDJlOSySpIrosOVM src=https://example.com crossorigin></script>
 ```
 
