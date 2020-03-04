@@ -13,7 +13,6 @@ data:text/html,<script integrity='sha256-sFHon+re/xKBUEHD0J8Vw0kJzU3Lmz9pBEan/YV
 data:text/html,<script integrity='sha256-sFHon+re/xKBUEHD0J8Vw0kJzU3Lmz9pBEan/YVLNdg=' crossorigin src='data:application/javascript,s=document.createElement(`script`);s.integrity=`sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4=`;s.src=location.hash.substr(1);s.crossOrigin=1;document.head.append(s)'></script>#data:application/javascript,alert('Source%20integrity%20verified!')%0A
 ```
 
-
 ```html
 data:text/html,<script integrity='sha256-sFHon+re/xKBUEHD0J8Vw0kJzU3Lmz9pBEan/YVLNdg=' crossorigin src='data:application/javascript,s=document.createElement(`script`);s.integrity=`sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4=`;s.src=location.hash.substr(1);s.crossOrigin=1;document.head.append(s)'></script>#https://coins.github.io/secure-bookmark/encodings/foo.js
 ```

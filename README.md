@@ -1,7 +1,7 @@
 # SecureBookmarks
 
 ## Abstract
-SecureBookmarks is a scheme for security critical web apps. With bookmarked [Data URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) and [subresource integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) a web app can verify its sources.
+SecureBookmarks is a scheme for security critical web apps. With bookmarked [Data URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) and [subresource integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) a web app can verify its sources even if its server is compromised.
 
 ## Introduction 
 Let's say you want to run some critical app on your phone. For example:
