@@ -23,11 +23,7 @@ Alright, if we can't use the stores because they are centralized and the apps ca
 Installing a secure app is possible with Data URLs and subresource integrity. Here's an example:
 
 ```html
-data:text/html,<script 
-                        integrity=sha256-cb4FM5gL20dRVo8Fs0ogQ/A5EiARDJlOSySpIrosOVM 
-                        src=https://example.com 
-                        crossorigin
-               ></script>
+data:text/html,<script src=https://example.com integrity=sha256-cb4FM5gL20dRVo8Fs0ogQ/A5EiARDJlOSySpIrosOVM crossorigin></script>
 ```
 
 This Data URL downloads the JavaScript at https://example.com and before execution it verifies that the source's hash equals `cb4FM5gL20dRVo8Fs0ogQ/A5EiARDJlOSySpIrosOVM`. So even if an attacker compromises the server there is no way to infect users with malicious code.
