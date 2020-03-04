@@ -1,7 +1,8 @@
 <h1>Secure Bookmark Demo</h1>
-<a id="$link">To install Drag to address bar</a>
+<a id="$link">To install click or drag this to address bar</a>
+<textarea id="$text" readonly></textarea>
 <script>
 const dataUrl = `data:text/html,<script src=${window.location}/sb.js></scr` + `ipt>`
 $link.href = dataUrl
-location = dataUrl
+$text.value = dataUrl
 </script>
