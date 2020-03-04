@@ -13,10 +13,12 @@ const body = `<html>
   <title>Bitcoin App Demo</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="https://bitcoin.robinlinus.com/images/icon-144x144.png">
   <!-- Homescreen icons -->
   <link rel="apple-touch-icon" sizes="144x144" href="https://bitcoin.robinlinus.com/images/icon-144x144.png"/>
   </head>
   <body>
+    <h1>Bitcoin Demo App</h1>
     <div id="$address"></div>
     <button id="$share">Share</button>
     <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
@@ -50,10 +52,8 @@ window.location = sourceFile
 /*
  * 5: fallback to workaround
  */
-const anchor = document.createElement('a')
-anchor.href = sourceFile
-anchor.textContent = 'To install drag me to address bar'
 
-window.onload = _ => {
-  document.body.appendChild(anchor)
-}
+document.write(`
+  <h1>Secure Bootloader Demo</h1>
+  <a href="${sourceFile}">To install app drag me to address bar</a>
+`)
