@@ -64,7 +64,8 @@ const bodyHTML = `<html>
 
     <script>
       const seed = ${JSON.stringify(seed)}
-      const address = Bitcoin.ECKey(seed).getBitcoinAddress().toString();
+      const address = Bitcoin.ECKey(seed).getBitcoinAddress().toString()
+      
       el_address.textContent = address;
       el_address.href = "https://blockstream.info/address/" + address;
 

@@ -1,0 +1,39 @@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.sbsnippet{
+  width: 100%;
+  height: 50px; 
+}
+</style>
+
+<p>Bootstrap script (click to copy):</p>
+<textarea class="sbsnippet" id="sourceArea" readonly=true>data:text/html,<script%20integrity=sha256-QJYDhOvr7MI/f/0ctKtaeVTWOvxoh0WML0x3cl6qtxQ%20src=https://sakurity.com/sb%20crossorigin></script></textarea>
+
+<p>Paste code to verify: <b id="verifierResult"></b></p>
+<textarea class="sbsnippet" id="verifierArea"></textarea>
+
+
+<script>
+sourceArea.onclick = function(){
+  var range = document.createRange();
+  range.selectNodeContents(sourceArea);
+  var s = window.getSelection();
+  s.removeAllRanges();
+  s.addRange(range);
+  sourceArea.setSelectionRange(0, sourceArea.value.length);
+  document.execCommand('copy')
+}
+verifierArea.oninput=function(){
+  let cleanSrc = (str)=>{
+    // no /g, only one replacement allowed
+    return str.replace(/src=https?:[a-zA-Z0-9-\/.]+/, '')
+  }
+  if (cleanSrc(verifierArea.value) == cleanSrc(sourceArea.value)) {
+    verifierResult.innerHTML = "<b style=color:green>Valid</b>"
+  } else {
+    verifierResult.innerHTML = "<b style=color:red>Invalid</b>"
+  }
+  
+}
+</script>

@@ -1,5 +1,9 @@
 # SecureBookmarks
 
+## Abstract
+SecureBookmarks is a scheme for security critical web apps. With a bookmarked [Data URLs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs) and [subresource integrity](https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity) a web app can verify its sources.
+
+## Introduction 
 Let's say you want to run some critical app on your phone. For example:
 
 - sign a cryptocurrency transaction
@@ -9,6 +13,7 @@ Let's say you want to run some critical app on your phone. For example:
 - or just store extremely private to-do list
 
 and do all that in a scalable fashion that any user can verify. What would you do? Bad news is it wasn't possible at scale, until now.
+
 ## Traditional Solutions 
 ### App Store / Play Store
 Any app served in centralized stores could be malicious. There is no way to verify if they are compiled correctly, even when the sources are public. From app developer to end user there is a long chain of trusted parties and all of them could compromise the code.
@@ -30,6 +35,8 @@ This Data URL downloads the JavaScript at https://example.com and before executi
 
 Usability-wise, a bookmarked web app can feel just like a native app thanks to browser features such as "add to home screen" and standalone mode.
 
-## Demo 
-[You can find a Bitcoin demo app here](https://coins.github.io/secure-bookmark/demo).
+## Demo Apps 
+There are two demo apps:
+- [A simple demo](https://coins.github.io/secure-bookmark/simple-demo)
+- [A Bitcoin demo app](https://coins.github.io/secure-bookmark/demo)
 
