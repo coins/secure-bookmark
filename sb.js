@@ -22,6 +22,7 @@ const body = `<html>
     <h2>Your Address</h2>
     <div id="$address"></div>
     <button id="$share">Share</button>
+    <button id="$copy">Copy</button>
 
     <h2>Secret Key</h2>
     <div id="$secret"></div>
@@ -31,6 +32,47 @@ const body = `<html>
     <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
 
     <script>
+      /**
+       *  Polyfill for navigator.clipboard 
+       */
+      if(!navigator.clipboard){
+          navigator.clipboard = {}
+
+          navigator.clipboard.writeText = text => {       
+
+              // A <span> contains the text to copy
+              const span = document.createElement('span');
+              span.textContent = text;
+              span.style.whiteSpace = 'pre'; // Preserve consecutive spaces and newlines
+
+              // Paint the span outside the viewport
+              span.style.position = 'absolute';
+              span.style.left = '-9999px';
+              span.style.top = '-9999px';
+
+              const win = window;
+              const selection = win.getSelection();
+              win.document.body.appendChild(span);
+
+              const range = win.document.createRange();
+              selection.removeAllRanges();
+              range.selectNode(span);
+              selection.addRange(range);
+
+              let success = false;
+              try {
+                  success = win.document.execCommand('copy');
+              } catch (err) {}
+
+              selection.removeAllRanges();
+              span.remove();
+
+              return success;
+          }
+      }
+    </script>
+
+    <script>
       const seed = ${JSON.stringify(seed)}
       const address = Bitcoin.ECKey(seed).getBitcoinAddress().toString();
       $address.textContent = address;
@@ -38,15 +80,24 @@ const body = `<html>
       $secret.textContent = Bitcoin.convert.bytesToHex(seed)
 
       $share.onclick = _ => {
-          navigator.share({text:"Here's my bitcoin address "+address});
+          navigator.share({text: "Here's my bitcoin address " + address });
       }
 
       $share.hidden = !navigator.share
 
+      $copy.onclick = _ => {
+        navigator.clipboard.writeText(address)
+      }
+
       $install.hidden = !!window.navigator.standalone
     </script>
     
-    
+    <style>
+      div{
+        word-break: break-all;
+        user-select:all;
+      }
+    </style>
   </body>
   </html>`
 
