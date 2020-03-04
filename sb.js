@@ -1,55 +1,59 @@
-document.write(`
-<html><head><meta name="viewport" content="width=device-width, initial-scale=1"></head>
-<body>
-<style>
-.sbsnippet{
-  width: 100%;
-  height: 50px; 
-}
-</style>
-<p>Choose first number (stored in state)</p>
-<input id="base" value=42>
+/**
+ * 1: we create some random seed
+ */
+let seed = new Uint8Array(32)
+crypto.getRandomValues(seed)
+seed = Array.from(seed)
 
-<p>This is final URL to save as a bookmark: (click to copy)</p>
-<textarea class="sbsnippet" id="sourceArea" readonly=true></textarea>
-</body>
-</html>`)
-
-base.oninput=function(){
-
-  let body = `<html>
+/**
+ * 2: we bootstrap our app containing the seed
+ */
+const body = `<html>
   <head>
+  <title>Bitcoin App Demo</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Homescreen icons -->
+  <link rel="apple-touch-icon" sizes="144x144" href="https://bitcoin.robinlinus.com/images/icon-144x144.png"/>
   </head>
   <body>
-  <p>Add number:</p>
-  <input id="base2" value="0">
-  <h1 id="outcome">outcome</h1>
+    <div id="$address"></div>
+    <button id="$share">Share</button>
+    <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
 
-  <script>
-  var state = ${JSON.stringify({base: Number(base.value)})}
-  update = function(){
-    let second = Number(base2.value)
-    outcome.innerHTML = \`stored \${state.base} + current \${second} = \${state.base+second}\`
-  }
-  window.onload = update
-  base2.oninput = update
-  </script>
+    <script>
+      const seed = ${JSON.stringify(seed)}
+      const address = Bitcoin.ECKey(seed).getBitcoinAddress().toString();
+      $address.textContent = address;
+
+      $share.onclick = _ => {
+          navigator.share({text:"Here's my bitcoin address "+address});
+      }
+
+      $share.hidden = !navigator.share
+    </script>
+    
+    Add to home screen
   </body>
   </html>`
 
-  sourceArea.value = `data:text/html;base64,`+btoa(body);
-}
-base.oninput()
+/*
+ * 3: We store the app in a data url
+ */
+const sourceFile = `data:text/html;base64,` + btoa(body)
 
-sourceArea.onclick = function(){
-  var range = document.createRange();
-  range.selectNodeContents(sourceArea);
+/*
+ * 4: try to redirect (chrome and firefox don't allow top-level navigation to Data URLs )
+ */
+window.location = sourceFile
 
-  var s = window.getSelection();
-  s.removeAllRanges();
-  s.addRange(range);
+/*
+ * 5: fallback to workaround
+ */
+const anchor = document.createElement('a')
+anchor.href = sourceFile
+anchor.textContent = 'To install drag me to address bar'
 
-  sourceArea.setSelectionRange(0, 9999999);
-  document.execCommand('copy')
+window.onload = _ => {
+  document.body.appendChild(anchor)
 }
