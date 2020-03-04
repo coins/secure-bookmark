@@ -45,7 +45,12 @@ There are two demo apps:
 - [Simple demo with URL verifier](https://coins.github.io/secure-bookmark/simple-demo)
 - [Bitcoin demo app](https://coins.github.io/secure-bookmark/demo)
 
-
-
 ## Source
-- You can find the [source code on Github](https://github.com/coins/secure-bookmark)
+You can find the [source code on Github](https://github.com/coins/secure-bookmark)
+
+## Bitcoin Demo App Screenshots
+<img src="screenshots/screenshot1.jpg" alt="Screenshot 1" width="320"/>
+<img src="screenshots/screenshot2.jpg" alt="Screenshot 2" width="320"/>
+<img src="screenshots/screenshot3.jpg" alt="Screenshot 3" width="320"/>
+<img src="screenshots/screenshot4.jpg" alt="Screenshot 4" width="320"/>
+<img src="screenshots/screenshot5.jpg" alt="Screenshot 5" width="320"/>
