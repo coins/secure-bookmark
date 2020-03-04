@@ -1,7 +1,6 @@
 title: SecureBookmark
 description: Security critical web apps with Data URI and subresource integrity.
 theme: minima
-minima:
-  social_links:
-    github: coins
-    twitter: coins_research
+social_links:
+  github: coins
+  twitter: coins_research
