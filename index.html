@@ -1,15 +1,43 @@
-<h1>Secure Bookmark Demo</h1>
-<a id="$link">Drag me to address bar and hit enter</a>
+<h1>Step 1: Secure Bookmark Demo</h1>
 <textarea id="$text" readonly></textarea>
+<a id="$link" class="installer">Drag me into tab bar</a>
 <script>
 const dataUrl = `data:text/html,<script src="${window.location}/sb.js" ntegrity="sha256-[hash here]" crossorigi></scr` + `ipt>`
 $link.href = dataUrl
 $text.value = dataUrl
 </script>
 <style>
-	textarea{
-		display: block;
-		width: 400px;
-		margin-top: 80px;
-	}
+html {
+    font-family: system-ui;
+}
+
+textarea {
+    display: block;
+    width: 400px;
+    margin-bottom: 80px;
+}
+
+
+.installer {
+    background-color: #00796b;
+    color: white;
+    fill: white;
+    font-family: system-ui;
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    border-radius: 64px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+        0 1px 8px 0 rgba(0, 0, 0, 0.12),
+        0 3px 3px -2px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    font-size: 16px;
+    max-width: 360px;
+    margin-left: 8px;
+}
+
+.installer:before {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath fill='white' d='M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+    margin-right: 16px;
+}
 </style>

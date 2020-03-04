@@ -8,7 +8,8 @@ seed = Array.from(seed)
 /**
  * 2: Bootstrap the app html and store the seed by hard-coding it
  */
-const body = `<html>
+
+const bodyHTML = `<html>
   <head>
   <title>Bitcoin Demo</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,17 +18,19 @@ const body = `<html>
   <!-- Homescreen icons -->
   <link rel="apple-touch-icon" sizes="144x144" href="https://bitcoin.robinlinus.com/images/icon-144x144.png">
   </head>
-  <body>
+  <body translate="no">
     <h1>Bitcoin Demo App</h1>
     <h2>Your Address</h2>
-    <div id="$address"></div>
+    <div>
+      <a id="$address" target="_blank"></a>
+    </div>
     <button id="$share">Share</button>
     <button id="$copy">Copy</button>
 
-    <h2>Secret Key</h2>
+    <h2>Your Secret Key</h2>
     <div id="$secret"></div>
 
-    <h2 id="$install" class="install">To install App: Press + and "Add to home screen"<h2>
+    <h2 id="$install">To install App: Press + and "Add to home screen"<h2>
 
     <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
     <script src="https://coins.github.io/secure-bookmark/clipboard.js" integrity="sha256-3VCByRM+Ge37Dm+yksb03tsaCAq9n1rDui/BpHhyIMA=" crossorigin></script>
@@ -36,6 +39,7 @@ const body = `<html>
       const seed = ${JSON.stringify(seed)}
       const address = Bitcoin.ECKey(seed).getBitcoinAddress().toString();
       $address.textContent = address;
+      $address.href = "https://blockstream.info/address/"+address;
 
       $secret.textContent = Bitcoin.convert.bytesToHex(seed)
 
@@ -51,20 +55,13 @@ const body = `<html>
 
       $install.hidden = !!window.navigator.standalone
     </script>
-    
-    <style>
-      div{
-        word-break: break-all;
-        user-select:all;
-      }
-    </style>
   </body>
   </html>`
 
 /*
  * 3: Compile the app into a Data URL 
  */
-const sourceFile = `data:text/html;base64,` + btoa(body)
+const sourceFile = `data:text/html;base64,` + btoa(bodyHTML)
 
 /*
  * 4: Try to redirect to the Data URL
@@ -77,6 +74,35 @@ window.location = sourceFile
  * Ask user to install manually
  */
 document.write(`
-  <h1>Secure Bootloader Demo</h1>
-  <a href="${sourceFile}">Drag me to address bar and press enter</a>
+  <h2>Step 2: Bootloader Demo</h2>
+  <a href="${sourceFile}" class="installer">Drag me into your browser's tab bar</a>
+  <style>
+    div{
+      word-break: break-all;
+      user-select:all;
+    }
+
+    .installer{
+      background-color: #00796b;
+      color:white;
+      fill:white;
+      font-family: system-ui;
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      border-radius: 64px;
+      box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+            0 1px 8px 0 rgba(0, 0, 0, 0.12),
+            0 3px 3px -2px rgba(0, 0, 0, 0.4);
+        text-decoration: none;
+        font-size: 16px;
+        max-width: 360px;
+        margin-left: 8px;
+    }
+
+    .installer:before {
+        content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath fill='white' d='M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
+        margin-right: 16px;
+    }
+  </style>
 `)
