@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <h1>Step 1: Secure Bookmark Demo</h1>
 <textarea id="$text" readonly></textarea>
 <a id="$link" class="installer">Drag me into tab bar</a>
@@ -7,7 +8,8 @@
     <a href="../">Documentation</a>
 </div>
 <script>
-const dataUrl = `data:text/html,<script src="${window.location}/sb.js" i-ntegrity="sha256-[hash here]" crossorigi></scr` + `ipt>`
+const path  = window.location.origin + window.location.pathname.replace('index.html','')
+const dataUrl = `data:text/html,<script src="${path}/sb.js" i-ntegrity="sha256-[hash here]" crossorigi></scr` + `ipt>`
 $link.href = dataUrl
 $text.value = dataUrl
 </script>
