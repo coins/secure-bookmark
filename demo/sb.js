@@ -59,8 +59,8 @@ const bodyHTML = `<html>
 
     <h2 id="el_install">To install App: Press + and "Add to home screen"<h2>
 
-    <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
-    <script src="https://coins.github.io/secure-bookmark/clipboard.js" integrity="sha256-3VCByRM+Ge37Dm+yksb03tsaCAq9n1rDui/BpHhyIMA=" crossorigin></script>
+    <script src="https://coins.github.io/secure-bookmark/demo/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
+    <script src="https://coins.github.io/secure-bookmark/demo/clipboard.js" integrity="sha256-3VCByRM+Ge37Dm+yksb03tsaCAq9n1rDui/BpHhyIMA=" crossorigin></script>
 
     <script>
       const seed = ${JSON.stringify(seed)}
