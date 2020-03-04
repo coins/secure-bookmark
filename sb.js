@@ -1,12 +1,12 @@
 /**
- * 1: we create some random seed
+ * 1: Create some random seed
  */
 let seed = new Uint8Array(32)
 crypto.getRandomValues(seed)
 seed = Array.from(seed)
 
 /**
- * 2: we bootstrap our app containing the seed
+ * 2: Bootstrap the app html and store the seed by hard-coding it
  */
 const body = `<html>
   <head>
@@ -15,7 +15,7 @@ const body = `<html>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="https://bitcoin.robinlinus.com/images/icon-144x144.png">
   <!-- Homescreen icons -->
-  <link rel="apple-touch-icon" sizes="144x144" href="https://bitcoin.robinlinus.com/images/icon-144x144.png"/>
+  <link rel="apple-touch-icon" sizes="144x144" href="https://bitcoin.robinlinus.com/images/icon-144x144.png">
   </head>
   <body>
     <h1>Bitcoin Demo App</h1>
@@ -27,10 +27,10 @@ const body = `<html>
     <h2>Secret Key</h2>
     <div id="$secret"></div>
 
-    <h2 id="$install">To install App: Press + and "Add to home screen"<h2>
+    <h2 id="$install" class="install">To install App: Press + and "Add to home screen"<h2>
 
     <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
-    <script src="https://coins.github.io/secure-bookmark/clipboard.js?1" integrity="sha256-3VCByRM+Ge37Dm+yksb03tsaCAq9n1rDui/BpHhyIMA=" crossorigin></script>
+    <script src="https://coins.github.io/secure-bookmark/clipboard.js" integrity="sha256-3VCByRM+Ge37Dm+yksb03tsaCAq9n1rDui/BpHhyIMA=" crossorigin></script>
 
     <script>
       const seed = ${JSON.stringify(seed)}
@@ -62,21 +62,21 @@ const body = `<html>
   </html>`
 
 /*
- * 3: We store the app in a data url
+ * 3: Compile the app into a Data URL 
  */
 const sourceFile = `data:text/html;base64,` + btoa(body)
 
 /*
- * 4: try to redirect 
+ * 4: Try to redirect to the Data URL
  * (Chrome and Firefox don't allow top-level navigation to Data URLs )
  */
 window.location = sourceFile
 
 /*
- * 5: fall back to a workaround
+ * 5: Otherwise, fall back to a workaround
+ * Ask user to install manually
  */
-
 document.write(`
   <h1>Secure Bootloader Demo</h1>
-  <a href="${sourceFile}">To install app drag me to address bar</a>
+  <a href="${sourceFile}">Drag me to address bar and press enter</a>
 `)
