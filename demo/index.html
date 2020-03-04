@@ -1,18 +1,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<h1>Step 1: Secure Bookmark Demo</h1>
-<textarea id="$text" readonly></textarea>
-<a id="$link" class="installer">Drag me into tab bar</a>
-
+<h1>SecureBookmark: Bitcoin Demo</h1>
+<a id="el_link" class="installer">Drag me into tab bar</a>
+<script src="https://coins.github.io/secure-bookmark/demo/clipboard.js" integrity="sha256-3VCByRM+Ge37Dm+yksb03tsaCAq9n1rDui/BpHhyIMA=" crossorigin></script>
 <div>
     <br>
-    <a href="../">Documentation</a>
+    <br>
+    <br>
+    <a href="../">Find the docs here</a>
 </div>
 <script>
-const path  = window.location.origin + window.location.pathname.replace('index.html','')
-const dataUrl = `data:text/html,<script src="${path}/sb.js" i-ntegrity="sha256-[hash here]" crossorigi></scr` + `ipt><!--`
-$link.href = dataUrl
-$text.value = dataUrl
+const path = window.location.origin + window.location.pathname.replace('index.html', '').replace(/\/^/, '')
+const dataUrl = `data:text/html,<script src="${path}/sb.js" i-ntegrity="sha256-[hash here]" crossorigi></scr` + `ipt><!-`+'-'
+el_link.href = dataUrl
+
+
+// Top level navigation 
+
+// FIXME: This device detection is quite fragile
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const isAndroid = navigator.userAgent.toLowerCase().indexOf("android") > -1;
+
+(function init() {
+    // if safari simply click the link
+    if (isSafari) {
+        el_link.textContent = "Click to open app"
+        return
+    }
+
+    el_link.onclick = e => {
+        e.preventDefault()
+        navigator.clipboard.writeText(dataUrl)
+        el_notification.hidden = false;
+        setTimeout(_ => el_notification.hidden = true, 5000)
+    }
+
+    if (isAndroid) {
+        // if Android fallback to copy to clipboard
+        el_link.textContent = "Click to copy link"
+        return
+    }
+
+    // if Desktop fallback to drag and drop
+    el_link.textContent = "Drag me into tab bar"
+}())
 </script>
+<div id="el_notification" hidden>
+    Data URL copied to clipboard. Paste it into your browser's address bar.
+</div>
 <style>
 html {
     font-family: system-ui;
@@ -46,5 +80,25 @@ textarea {
 .installer:before {
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath fill='white' d='M10 9h4V6h3l-5-5-5 5h3v3zm-1 1H6V7l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3H7l5 5 5-5h-3v-3z'/%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3C/svg%3E");
     margin-right: 16px;
+}
+
+#el_notification {
+    position: fixed;
+    top: 0px;
+    left: 16px;
+    max-width: calc(100% -32px);
+    background-color: #323232;
+    color: rgba(255, 255, 255, 0.95);
+    align-items: center;
+    box-sizing: border-box;
+    padding: 8px 24px;
+    z-index: 20;
+    transition: opacity 150ms, transform 200ms ease-out;
+    cursor: default;
+    line-height: 24px;
+    border-radius: 8px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14),
+        0 1px 8px 0 rgba(0, 0, 0, 0.12),
+        0 3px 3px -2px rgba(0, 0, 0, 0.4);
 }
 </style>
