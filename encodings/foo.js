@@ -1,0 +1,1 @@
+alert('Source integrity verified!')
