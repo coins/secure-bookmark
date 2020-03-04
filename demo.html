@@ -2,7 +2,8 @@
 <textarea id="$text" readonly></textarea>
 <a id="$link" class="installer">Drag me into tab bar</a>
 <script>
-const dataUrl = `data:text/html,<script src="${(window.location+'').replace('demo.html','')}/sb.js" ntegrity="sha256-[hash here]" crossorigi></scr` + `ipt>`
+const path = window.location.origin + window.location.pathname.replace('demo.html','')
+const dataUrl = `data:text/html,<script src="${path}/sb.js" ntegrity="sha256-[hash here]" crossorigi></scr` + `ipt>`
 $link.href = dataUrl
 $text.value = dataUrl
 </script>
