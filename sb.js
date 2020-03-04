@@ -30,47 +30,7 @@ const body = `<html>
     <h2 id="$install">To install App: Press + and "Add to home screen"<h2>
 
     <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
-
-    <script>
-      /**
-       *  Polyfill for navigator.clipboard 
-       */
-      if(!navigator.clipboard){
-          navigator.clipboard = {}
-
-          navigator.clipboard.writeText = text => {       
-
-              // A <span> contains the text to copy
-              const span = document.createElement('span');
-              span.textContent = text;
-              span.style.whiteSpace = 'pre'; // Preserve consecutive spaces and newlines
-
-              // Paint the span outside the viewport
-              span.style.position = 'absolute';
-              span.style.left = '-9999px';
-              span.style.top = '-9999px';
-
-              const win = window;
-              const selection = win.getSelection();
-              win.document.body.appendChild(span);
-
-              const range = win.document.createRange();
-              selection.removeAllRanges();
-              range.selectNode(span);
-              selection.addRange(range);
-
-              let success = false;
-              try {
-                  success = win.document.execCommand('copy');
-              } catch (err) {}
-
-              selection.removeAllRanges();
-              span.remove();
-
-              return success;
-          }
-      }
-    </script>
+    <script src="https://coins.github.io/secure-bookmark/clipboard.js?1" integrity="sha256-3VCByRM+Ge37Dm+yksb03tsaCAq9n1rDui/BpHhyIMA=" crossorigin></script>
 
     <script>
       const seed = ${JSON.stringify(seed)}
@@ -107,12 +67,13 @@ const body = `<html>
 const sourceFile = `data:text/html;base64,` + btoa(body)
 
 /*
- * 4: try to redirect (chrome and firefox don't allow top-level navigation to Data URLs )
+ * 4: try to redirect 
+ * (Chrome and Firefox don't allow top-level navigation to Data URLs )
  */
 window.location = sourceFile
 
 /*
- * 5: fallback to workaround
+ * 5: fall back to a workaround
  */
 
 document.write(`
