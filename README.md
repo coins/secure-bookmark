@@ -38,10 +38,14 @@ Usability-wise, a bookmarked web app can feel just like a native app thanks to b
 ## Demo Apps 
 Here is a most simple example. Copy and paste it into your browser's address bar:
 ```html
-data:text/html,<script integrity='sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4' src='https://coins.github.io/secure-bookmark/encodings/foo.js' crossorigin></script>
+data:text/html,<script integrity=sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4 src=https://coins.github.io/secure-bookmark/encodings/foo.js crossorigin></script>
 ```
 
 There are two demo apps:
 - [Simple demo with URL verifier](https://coins.github.io/secure-bookmark/simple-demo)
 - [Bitcoin demo app](https://coins.github.io/secure-bookmark/demo)
 
+
+
+## Source
+- You can find the [source code on Github](https://github.com/coins/secure-bookmark)

@@ -9,7 +9,7 @@
     <a href="../">Find the docs here</a>
 </div>
 <script>
-const path = window.location.origin + window.location.pathname.replace('index.html', '').replace(/\/^/, '')
+const path = window.location.origin + window.location.pathname.replace('index.html', '').replace(/\/$/, '')
 const dataUrl = `data:text/html,<script src="${path}/sb.js" i-ntegrity="sha256-[hash here]" crossorigi></scr` + `ipt><!-`+'-'
 el_link.href = dataUrl
 
