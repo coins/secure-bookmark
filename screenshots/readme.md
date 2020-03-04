@@ -1,7 +1,7 @@
 # Demo App Screenshots
-![Screenshot 1](screenshot1.jpg)
-![Screenshot 2](screenshot2.jpg)
-![Screenshot 3](screenshot3.jpg)
-![Screenshot 4](screenshot4.jpg)
-![Screenshot 5](screenshot5.jpg)
+<img src="screenshot1.jpg" alt="Screenshot 1" width="320"/>
+<img src="screenshot2.jpg" alt="Screenshot 2" width="320"/>
+<img src="screenshot3.jpg" alt="Screenshot 3" width="320"/>
+<img src="screenshot4.jpg" alt="Screenshot 4" width="320"/>
+<img src="screenshot5.jpg" alt="Screenshot 5" width="320"/>
 
