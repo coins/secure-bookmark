@@ -14,7 +14,7 @@ Let's say you want to run some critical app on your phone. For example:
 
 and do all that in a scalable fashion that any user can verify. What would you do? Bad news is it wasn't possible at scale, until now.
 
-## Traditional Solutions 
+## Traditional Solutions Do Not Work
 ### App Store / Play Store
 Any app served in centralized stores could be malicious. There is no way to verify if they are compiled correctly, even when the sources are public. From app developer to end user there is a long chain of trusted parties and all of them could compromise the code.
 
@@ -38,8 +38,9 @@ Usability-wise, a bookmarked web app can feel just like a native app thanks to b
 ## Demo Apps 
 Here is a most simple example. Copy and paste it into your browser's address bar:
 ```html
-data:text/html,<script integrity=sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4 src=https://coins.github.io/secure-bookmark/encodings/foo.js crossorigin></script>
+data:text/html,<script/integrity="sha256-zC+dNFewSYDLmqdv0OvyUhKfUWXlfIySrKfYzjgxuA4"/src="https://coins.github.io/secure-bookmark/encodings/foo.js"/crossorigin></script>
 ```
+(Removed white spaces bc of an iOS glitch when pasting URLs).
 
 There are two demo apps:
 - [Simple demo with URL verifier](https://coins.github.io/secure-bookmark/simple-demo)
@@ -52,5 +53,5 @@ You can find the [source code on Github](https://github.com/coins/secure-bookmar
 <img src="screenshots/screenshot1.jpg" alt="Screenshot 1" width="320"/>
 <img src="screenshots/screenshot2.jpg" alt="Screenshot 2" width="320"/>
 <img src="screenshots/screenshot3.jpg" alt="Screenshot 3" width="320"/>
-<img src="screenshots/screenshot4.jpg" alt="Screenshot 4" width="320"/>
-<img src="screenshots/screenshot5.jpg" alt="Screenshot 5" width="320"/>
+<img src="screenshots/screenshot5.jpg" alt="Screenshot 4" width="320"/>
+<img src="screenshots/screenshot4.jpg" alt="Screenshot 5" width="320"/>
