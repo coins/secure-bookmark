@@ -1,4 +1,9 @@
 /**
+ * Secure Bookmark Bootloader
+ * Compiles the app HTML and creates a base64 Data URL
+ */
+
+/**
  * 1: Create some random seed
  */
 let seed = new Uint8Array(32)
@@ -17,20 +22,41 @@ const bodyHTML = `<html>
   <link rel="shortcut icon" type="image/x-icon" href="https://bitcoin.robinlinus.com/images/icon-144x144.png">
   <!-- Homescreen icons -->
   <link rel="apple-touch-icon" sizes="144x144" href="https://bitcoin.robinlinus.com/images/icon-144x144.png">
+  <style>
+      html{
+        font-family:system-ui;
+      }
+      
+      #el_secret{
+        word-break: break-all;
+        user-select: all;
+        font-family: monospace;
+        padding: 8px;
+        background: rgba(0,0,0,0.2);
+        max-width: 260px;
+      }
+
+      #el_address{
+        display:block;
+        padding-bottom:16px;
+      }
+  </style>
   </head>
   <body translate="no">
     <h1>Bitcoin Demo App</h1>
+    <h2>DISCLAIMER: EXPERIMENTAL DEMO</h2>
+    DON'T USE REAL MONEY !! THIS IS A EXPERIMENTAL CODE. 
     <h2>Your Address</h2>
     <div>
-      <a id="$address" target="_blank"></a>
+      <a id="el_address" target="_blank"></a>
     </div>
-    <button id="$share">Share</button>
-    <button id="$copy">Copy</button>
+    <button id="el_share">Share</button>
+    <button id="el_copy">Copy</button>
 
     <h2>Your Secret Key</h2>
-    <div id="$secret"></div>
+    <div id="el_secret"></div>
 
-    <h2 id="$install">To install App: Press + and "Add to home screen"<h2>
+    <h2 id="el_install">To install App: Press + and "Add to home screen"<h2>
 
     <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
     <script src="https://coins.github.io/secure-bookmark/clipboard.js" integrity="sha256-3VCByRM+Ge37Dm+yksb03tsaCAq9n1rDui/BpHhyIMA=" crossorigin></script>
@@ -38,22 +64,22 @@ const bodyHTML = `<html>
     <script>
       const seed = ${JSON.stringify(seed)}
       const address = Bitcoin.ECKey(seed).getBitcoinAddress().toString();
-      $address.textContent = address;
-      $address.href = "https://blockstream.info/address/"+address;
+      el_address.textContent = address;
+      el_address.href = "https://blockstream.info/address/" + address;
 
-      $secret.textContent = Bitcoin.convert.bytesToHex(seed)
+      el_secret.textContent = Bitcoin.convert.bytesToHex(seed)
 
-      $share.onclick = _ => {
+      el_share.onclick = _ => {
           navigator.share({text: "Here's my bitcoin address " + address });
       }
 
-      $share.hidden = !navigator.share
+      el_share.hidden = !navigator.share
 
-      $copy.onclick = _ => {
-        navigator.clipboard.writeText(address)
+      el_copy.onclick = _ => {
+          navigator.clipboard.writeText(address)
       }
 
-      $install.hidden = !!window.navigator.standalone
+      el_install.hidden = !!window.navigator.standalone
     </script>
   </body>
   </html>`
@@ -77,11 +103,6 @@ document.write(`
   <h2>Step 2: Bootloader Demo</h2>
   <a href="${sourceFile}" class="installer">Drag me into your browser's tab bar</a>
   <style>
-    div{
-      word-break: break-all;
-      user-select:all;
-    }
-
     .installer{
       background-color: #00796b;
       color:white;
