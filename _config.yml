@@ -1,3 +1,10 @@
 title: SecureBookmark
 description: Security critical web apps with Data URI and subresource integrity.
 theme: minima
+author:
+  name: Robin Linus
+  email: "robinlinus@pm.me"
+minima:
+  social_links:
+    github: coins
+    twitter: coins_research
