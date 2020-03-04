@@ -21,7 +21,7 @@ const body = `<html>
     <h1>Bitcoin Demo App</h1>
     <h2>Your Address</h2>
     <div id="$address"></div>
-    <h2>To install: Press + and "Add to home screen"<h2>
+    <h2 id="$install">To install: Press + and "Add to home screen"<h2>
     <button id="$share">Share</button>
     <script src="https://coins.github.io/secure-bookmark/bitcoin.min.js" integrity="sha256-wYrSlO5fsak7WTxJ9VxtZRB/DFpatfv/cEgUXs5/FtQ" crossorigin></script>
 
