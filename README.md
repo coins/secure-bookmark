@@ -1,3 +1,5 @@
+# Secure Bookmarks
+
 Let's say you want to run some critical app on your phone. For example:
 
 - sign a cryptocurrency transaction
